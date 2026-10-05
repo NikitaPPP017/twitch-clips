@@ -1,0 +1,46 @@
+# --- секреты
+.env
+.env.*
+!.env.example
+
+# --- видео и большие медиа (VOD, клипы, примеры)
+*.mp4
+*.mov
+*.MOV
+*.mkv
+*.webm
+*.m4v
+*.wav
+*.aac
+*.m4a
+twitch-clips-examples/
+
+# --- данные конкретного стрима и результаты
+input/
+work/
+output/
+scratch/
+
+# --- модели и кэши
+models/
+*.safetensors
+*.bin
+*.pt
+*.onnx
+*.gguf
+.cache/
+huggingface/
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+.remotion/
+
+# --- прототип, из которого собран навык (всё рабочее - в .claude/skills/twitch-clips)
+/scripts/
+/remotion/
+
+# --- локальные настройки Claude Code и системы
+.claude/settings.local.json
+.DS_Store

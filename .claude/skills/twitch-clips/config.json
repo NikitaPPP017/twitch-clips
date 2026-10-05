@@ -1,0 +1,51 @@
+{
+  "nickname": "Vanik696",
+  "language": "ru",
+  "max_clip_seconds": 179,
+  "subtitles": {
+    "uppercase": true,
+    "dash": true,
+    "max_chars": 22,
+    "font_weight": 900,
+    "font_size": 68,
+    "color": "#FFFFFF",
+    "stroke_color": "#000000",
+    "stroke_px": 14,
+    "bottom_px": 300,
+    "fixes": {
+      "ВАННИК": "ВАНИК",
+      "ВАНЕК": "ВАНИК",
+      "КЛОД": "CLAUDE",
+      "КЛОДУ": "CLAUDE",
+      "КЛОДА": "CLAUDE",
+      "КЛАУД": "CLAUDE"
+    }
+  },
+  "badge": {
+    "top_offset_px": 16,
+    "font_size": 58,
+    "stroke_px": 12,
+    "icon_px": 44
+  },
+  "layout": {
+    "cam_height": 640
+  },
+  "pauses": {
+    "cut": true,
+    "min_pause_sec": 0.7,
+    "keep_pad_sec": 0.15
+  },
+  "detector": {
+    "whisper_model": "mlx-community/whisper-large-v3-turbo",
+    "laugh_model": "MIT/ast-finetuned-audioset-10-10-0.4593",
+    "strong_laugh": 0.15,
+    "chat_lag_sec": 12
+  },
+  "open_questions": {
+    "_comment": "null = не решено, спросить у пользователя перед монтажом. Сейчас реализован только вариант: без музыки, без эффектов, сразу с подводки, склейки встык с вырезанием пауз.",
+    "music_overlay": null,
+    "sound_effects": null,
+    "clip_start": null,
+    "compilation_cuts": null
+  }
+}
