@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/bin/python .claude/skills/twitch-clips/scripts/*)",
+      "Bash(zsh .claude/skills/twitch-clips/scripts/*)",
+      "Edit(/work/**)"
+    ],
+    "deny": [
+      "Read(/.env)",
+      "Edit(/.env)"
+    ]
+  }
+}
