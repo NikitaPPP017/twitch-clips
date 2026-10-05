@@ -1,7 +1,7 @@
 """Чат Twitch VOD через публичный GQL API (библиотека chat-downloader сломана с 2026 г.).
 
 Usage: python download_chat.py <vod_id> <out.json>
-Нужен TWITCH_CLIENT_ID в .env (Client-ID веб-плеера twitch.tv, см. README).
+Client-ID: TWITCH_CLIENT_ID из .env, иначе twitch.client_id из config.json.
 Формат: [{time_in_seconds, message, author: {name}, emotes: [{name}]}]
 """
 import json
@@ -10,16 +10,16 @@ import sys
 import time
 import urllib.request
 
-import common  # noqa: F401  загружает .env из корня проекта
+from common import config  # импорт common заодно загружает .env из корня проекта
 
 GQL = "https://gql.twitch.tv/gql"
 FIELDS = "edges{cursor node{contentOffsetSeconds commenter{displayName} message{fragments{text emote{emoteID}}}}} pageInfo{hasNextPage}"
 
 
 def client_id():
-    cid = os.environ.get("TWITCH_CLIENT_ID", "").strip()
+    cid = os.environ.get("TWITCH_CLIENT_ID", "").strip() or config().get("twitch", {}).get("client_id", "")
     if not cid:
-        sys.exit("ОШИБКА: нет TWITCH_CLIENT_ID. Скопируй .env.example в .env и впиши Client-ID (см. README, раздел про ключи Twitch).")
+        sys.exit("ОШИБКА: нет Client-ID Twitch ни в .env, ни в config.json (twitch.client_id).")
     return cid
 
 
@@ -43,9 +43,10 @@ def download(vod_id, out):
         arg = f'after:"{cursor}"' if cursor else "contentOffsetSeconds:0"
         resp = gql(f'query{{video(id:"{vod_id}"){{comments({arg}){{{FIELDS}}}}}}}')
         video = (resp.get("data") or {}).get("video")
-        if not video:
-            raise RuntimeError(f"Twitch не отдал чат: {resp.get('errors')}")
-        comments = video["comments"]
+        comments = (video or {}).get("comments")
+        if not comments:
+            sys.exit(f"ОШИБКА: Twitch не отдал чат (VOD удалён/скрыт или Client-ID больше не принимается). "
+                     f"Ответ: {resp.get('errors') or 'пусто'}")
         for edge in comments["edges"]:
             node = edge["node"]
             frags = node["message"]["fragments"]

@@ -2,6 +2,10 @@
   "nickname": "Vanik696",
   "language": "ru",
   "max_clip_seconds": 179,
+  "twitch": {
+    "_comment": "Публичный Client-ID веб-плеера Twitch для скачивания чата VOD (не секрет, одинаковый у всех). TWITCH_CLIENT_ID в .env, если задан, важнее. Код со страницы twitch.tv (kimne78...) для чата не подходит.",
+    "client_id": "kd1unb4b3q4t58fwlpcbzcbnm76a8fp"
+  },
   "subtitles": {
     "uppercase": true,
     "dash": true,

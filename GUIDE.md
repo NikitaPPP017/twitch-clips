@@ -70,7 +70,7 @@ https://github.com/NikitaPPP017/twitch-clips/archive/refs/heads/main.zip
 **Один раз заранее:**
 1. Нужен Mac на M1–M4, [Homebrew](https://brew.sh) и Claude Code.
 2. Скачать проект и открыть его в Claude Code, как описано в разделе [«Как подключить навык»](#как-подключить-навык).
-3. По желанию, для сигнала чата: скопировать `.env.example` в `.env` и вписать `TWITCH_CLIENT_ID`. Как его найти, написано в [README](README.md#3-ключ-twitch-нужен-для-чата). Без него всё работает, только без чата.
+3. Чат Twitch настраивать не нужно: навык скачивает его сам и учитывает реакции зрителей (подробнее в [README](README.md#3-чат-twitch-настраивать-не-нужно)).
 
 **Каждый раз:**
 1. Открыть папку `twitch-clips-main` в Claude Code: вкладка Code в приложении или `cd ~/Desktop/twitch-clips-main && claude` в терминале.

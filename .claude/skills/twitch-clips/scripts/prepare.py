@@ -39,7 +39,7 @@ def main(source):
         print("chat: уже есть, пропускаю")
     elif m:
         if subprocess.run([PY, f"{HERE}/download_chat.py", m.group(1), str(CHAT)]).returncode != 0:
-            print("chat: ВНИМАНИЕ - чат не скачан (нет ключа или Twitch не отдал), сигнал чата будет пустым")
+            print("chat: ВНИМАНИЕ - ЧАТ НЕ СКАЧАН, реакции зрителей не учитываются. Обязательно сказать об этом в итоговом отчёте.")
     else:
         print("chat: ВНИМАНИЕ - дан файл, а не ссылка Twitch, чат не скачан, сигнал чата будет пустым")
 
